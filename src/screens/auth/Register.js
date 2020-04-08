@@ -1,17 +1,36 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Image, ScrollView } from 'react-native'
+import TextField from '../../components/TextField'
+import Button from '../../components/Button'
 
 export default class Register extends React.Component {
+  state = {
+    name: '',
+    email: '',
+    password: ''
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.headerContainer}>
-          <Text>Na?</Text>
-          <Text>“Your time is limited, so don’t waste it living someone else’s life. Don’t be trapped by dogma – which is living with the results of other people’s thinking.” – Steve Jobs</Text>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Text>Register Button</Text>
-        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Image source={require('../../assets/images/auth/registerImage.jpg')} style={styles.logo} />
+          <View style={styles.formContainer}>
+            <TextField 
+              iconSource={require('../../assets/images/components/email.png')}
+              placeholder="Email"
+            />
+            <TextField 
+              iconSource={require('../../assets/images/components/password.png')}
+              placeholder="Password"
+            />
+            <TextField 
+              iconSource={require('../../assets/images/components/name.png')}
+              placeholder="Name"
+            />
+          </View>
+          <Button title="Sign Up" />
+        </ScrollView>
       </View>
     )
   }
@@ -20,12 +39,17 @@ export default class Register extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10
+    padding: 25,
+    alignItems: 'center'
   },
-  headerContainer: {
-    flex: 2
+  logo: {
+    marginTop: 30,
+    width: 130,
+    height: 130,
+    alignSelf: 'center',
+    borderRadius: 20
   },
-  buttonContainer: {
-    flex: 1
+  formContainer: {
+    marginVertical: 30
   }
 });

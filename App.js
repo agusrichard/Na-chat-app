@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, Button, StyleSheet } from 'react-native'
-import AuthLanding from './src/screens/auth/AuthLanding'
+import Register from './src/screens/auth/Register'
 
 export default class App extends React.Component {
 
   render() {
     return (
       <View>
-        <AuthLanding />
+        <Register />
       </View>
     )
   }
