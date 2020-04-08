@@ -61,6 +61,15 @@
 		<string>ComicNeue-Light.ttf</string>
 		<string>ComicNeue-LightItalic.ttf</string>
 		<string>ComicNeue-Regular.ttf</string>
+		<string>Rokkitt-Black.ttf</string>
+		<string>Rokkitt-Bold.ttf</string>
+		<string>Rokkitt-ExtraBold.ttf</string>
+		<string>Rokkitt-ExtraLight.ttf</string>
+		<string>Rokkitt-Light.ttf</string>
+		<string>Rokkitt-Medium.ttf</string>
+		<string>Rokkitt-Regular.ttf</string>
+		<string>Rokkitt-SemiBold.ttf</string>
+		<string>Rokkitt-Thin.ttf</string>
 	</array>
 </dict>
 </plist>

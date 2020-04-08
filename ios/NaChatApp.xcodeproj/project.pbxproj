@@ -22,6 +22,15 @@
 		4C22FA4822D24C7A8A53C084 /* ComicNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84AE7FB702D149408AB7568C /* ComicNeue-Light.ttf */; };
 		CEE75E3705644A549A8127A1 /* ComicNeue-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A51FD1371174751B354A2A9 /* ComicNeue-LightItalic.ttf */; };
 		46B261293D7647B09239560C /* ComicNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10D50147E72B477089572959 /* ComicNeue-Regular.ttf */; };
+		5BE6C2754A4D45BC9DB8F9EB /* Rokkitt-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4213D43AEFEB45B9A8B9817C /* Rokkitt-Black.ttf */; };
+		B99AAC39811942F79D28BFC8 /* Rokkitt-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59AE344B559642248ECA866B /* Rokkitt-Bold.ttf */; };
+		0C3FC34233EB4E78A4F09D74 /* Rokkitt-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D834E2430F9647A6932AAAC7 /* Rokkitt-ExtraBold.ttf */; };
+		3B8EF9F3965C491EABBE6997 /* Rokkitt-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84F84A9385EE467EBF75F611 /* Rokkitt-ExtraLight.ttf */; };
+		9E28A103D288407F90B86F4B /* Rokkitt-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C02E9EC9A3EA4FD2BD33C480 /* Rokkitt-Light.ttf */; };
+		40C919737E434081861DC2E2 /* Rokkitt-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE2D3882699742559DB6DD2D /* Rokkitt-Medium.ttf */; };
+		7B7281E915604C60A150E8CD /* Rokkitt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87D4CE23333E405B82742812 /* Rokkitt-Regular.ttf */; };
+		AD77596B7A814DCAA72B1716 /* Rokkitt-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC7826DC45F04C729E251C75 /* Rokkitt-SemiBold.ttf */; };
+		1B68D99FEFC648DE8FAED11C /* Rokkitt-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A9DC11F7C4C34B14A6C4A /* Rokkitt-Thin.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +72,15 @@
 		84AE7FB702D149408AB7568C /* ComicNeue-Light.ttf */ = {isa = PBXFileReference; name = "ComicNeue-Light.ttf"; path = "../src/assets/fonts/ComicNeue-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		3A51FD1371174751B354A2A9 /* ComicNeue-LightItalic.ttf */ = {isa = PBXFileReference; name = "ComicNeue-LightItalic.ttf"; path = "../src/assets/fonts/ComicNeue-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		10D50147E72B477089572959 /* ComicNeue-Regular.ttf */ = {isa = PBXFileReference; name = "ComicNeue-Regular.ttf"; path = "../src/assets/fonts/ComicNeue-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4213D43AEFEB45B9A8B9817C /* Rokkitt-Black.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Black.ttf"; path = "../src/assets/fonts/Rokkitt-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		59AE344B559642248ECA866B /* Rokkitt-Bold.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Bold.ttf"; path = "../src/assets/fonts/Rokkitt-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D834E2430F9647A6932AAAC7 /* Rokkitt-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Rokkitt-ExtraBold.ttf"; path = "../src/assets/fonts/Rokkitt-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		84F84A9385EE467EBF75F611 /* Rokkitt-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Rokkitt-ExtraLight.ttf"; path = "../src/assets/fonts/Rokkitt-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C02E9EC9A3EA4FD2BD33C480 /* Rokkitt-Light.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Light.ttf"; path = "../src/assets/fonts/Rokkitt-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BE2D3882699742559DB6DD2D /* Rokkitt-Medium.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Medium.ttf"; path = "../src/assets/fonts/Rokkitt-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		87D4CE23333E405B82742812 /* Rokkitt-Regular.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Regular.ttf"; path = "../src/assets/fonts/Rokkitt-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AC7826DC45F04C729E251C75 /* Rokkitt-SemiBold.ttf */ = {isa = PBXFileReference; name = "Rokkitt-SemiBold.ttf"; path = "../src/assets/fonts/Rokkitt-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6E2A9DC11F7C4C34B14A6C4A /* Rokkitt-Thin.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Thin.ttf"; path = "../src/assets/fonts/Rokkitt-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +197,15 @@
 				84AE7FB702D149408AB7568C /* ComicNeue-Light.ttf */,
 				3A51FD1371174751B354A2A9 /* ComicNeue-LightItalic.ttf */,
 				10D50147E72B477089572959 /* ComicNeue-Regular.ttf */,
+				4213D43AEFEB45B9A8B9817C /* Rokkitt-Black.ttf */,
+				59AE344B559642248ECA866B /* Rokkitt-Bold.ttf */,
+				D834E2430F9647A6932AAAC7 /* Rokkitt-ExtraBold.ttf */,
+				84F84A9385EE467EBF75F611 /* Rokkitt-ExtraLight.ttf */,
+				C02E9EC9A3EA4FD2BD33C480 /* Rokkitt-Light.ttf */,
+				BE2D3882699742559DB6DD2D /* Rokkitt-Medium.ttf */,
+				87D4CE23333E405B82742812 /* Rokkitt-Regular.ttf */,
+				AC7826DC45F04C729E251C75 /* Rokkitt-SemiBold.ttf */,
+				6E2A9DC11F7C4C34B14A6C4A /* Rokkitt-Thin.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -328,6 +355,15 @@
 				4C22FA4822D24C7A8A53C084 /* ComicNeue-Light.ttf in Resources */,
 				CEE75E3705644A549A8127A1 /* ComicNeue-LightItalic.ttf in Resources */,
 				46B261293D7647B09239560C /* ComicNeue-Regular.ttf in Resources */,
+				5BE6C2754A4D45BC9DB8F9EB /* Rokkitt-Black.ttf in Resources */,
+				B99AAC39811942F79D28BFC8 /* Rokkitt-Bold.ttf in Resources */,
+				0C3FC34233EB4E78A4F09D74 /* Rokkitt-ExtraBold.ttf in Resources */,
+				3B8EF9F3965C491EABBE6997 /* Rokkitt-ExtraLight.ttf in Resources */,
+				9E28A103D288407F90B86F4B /* Rokkitt-Light.ttf in Resources */,
+				40C919737E434081861DC2E2 /* Rokkitt-Medium.ttf in Resources */,
+				7B7281E915604C60A150E8CD /* Rokkitt-Regular.ttf in Resources */,
+				AD77596B7A814DCAA72B1716 /* Rokkitt-SemiBold.ttf in Resources */,
+				1B68D99FEFC648DE8FAED11C /* Rokkitt-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
