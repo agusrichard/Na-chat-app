@@ -14,6 +14,7 @@ export default function TextField(props) {
         placeholder={props.placeholder}
         onChangeText={props.handleChange}
         value={props.value}
+        secureTextEntry={ props.placeholder === 'Password' ? true : false }
         style={styles.textInput}
         onFocus={() => setColor('#951dd1')}
         onBlur={() => setColor('#999')}

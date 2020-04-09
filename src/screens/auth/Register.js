@@ -1,33 +1,56 @@
 import React from 'react'
-import { StyleSheet, View, Image, ScrollView } from 'react-native'
+import { db, auth } from '../../config/Firebase'
+import { StyleSheet, View, Image, ScrollView, Text } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import TextField from '../../components/TextField'
 import Button from '../../components/Button'
 
 class Register extends React.Component {
-  state = {
-    name: '',
-    email: '',
-    password: '',
-    loading: false,
-    errorMessage: ''
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      email: '',
+      password: '',
+      isLoading: false,
+      errorMessage: '',
+      isSuccess: false
+    }
+
+    auth.onAuthStateChanged(this.onAuthStateChanged)
   }
 
-  signup = () => {
+  onAuthStateChanged = (user) => {
+    if (user) {
+        db.ref().child('users').push({
+            email: user.email,
+            uid: user.uid,
+            name: this.state.name
+        })
+        this.setState({
+            isLoading: false,
+            isSuccess: true
+        })
+    }
+}
+
+  register = () => {
     this.setState({
       errorMessage: null,
-      loading: true 
+      isLoading: true 
     })
     const {email, password} = this.state;
-    firebase.auth()
+    auth
       .createUserWithEmailAndPassword(email, password)
       .catch((error) => {
           // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log('Error in register:', errorMessage)
           this.setState({
               errorMessage,
-              loading: false
+              isLoading: false
           })
       });
   }
@@ -54,7 +77,15 @@ class Register extends React.Component {
               handleChange={(name) => this.setState({name})}
             />
           </View>
-          <Button title="Sign Up" />
+          { this.state.isSuccess ? 
+            <Text>Success</Text>
+            :
+            <Button 
+              title="Sign Up"
+              isLoading={this.state.isLoading}
+              onPress={() => this.register()}
+            />
+          }
         </ScrollView>
       </View>
     )
