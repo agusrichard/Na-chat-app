@@ -1,13 +1,54 @@
 import React from 'react'
-import { StyleSheet, View, Image, ScrollView } from 'react-native'
+import { StyleSheet, View, Image, ScrollView, Text } from 'react-native'
 import { withNavigation } from 'react-navigation'
+import { db, auth } from '../../config/Firebase'
 import TextField from '../../components/TextField'
 import Button from '../../components/Button'
 
-class LoginOriginal extends React.Component {
-  state = {
-    email: '',
-    password: ''
+class Login extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: '',
+      password: '',
+      isLoading: false,
+      isSuccess: false,
+      errorMessage: ''
+    }
+
+    auth.onAuthStateChanged(this.onAuthStateChanged)
+  }
+
+
+  onAuthStateChanged = (user) => {
+    if (user) {
+      console.log('onAuthStateChanged', user)
+      this.setState({
+          isLoading: false,
+          isSuccess: true
+      })
+    }
+  }
+
+
+  login = () => {
+    this.setState({
+      errorMessage: null,
+      isLoading: true 
+    })
+    const {email, password} = this.state;
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage)
+        this.setState({
+            errorMessage,
+            isLoading: false
+        })
+      });
   }
 
   render() {
@@ -25,7 +66,15 @@ class LoginOriginal extends React.Component {
               placeholder="Password"
             />
           </View>
-          <Button title="Sign In" />
+          { this.state.isSuccess ? 
+            <Text>Success</Text>
+            :
+            <Button 
+              title="Sign Up"
+              isLoading={this.state.isLoading}
+              onPress={() => this.login()}
+            />
+          }
         </ScrollView>
       </View>
     )
@@ -36,7 +85,8 @@ class LoginOriginal extends React.Component {
 const styles = StyleSheet.create({
   container: {
     padding: 25,
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#fff'
   },
   logo: {
     marginTop: 30,
@@ -51,6 +101,6 @@ const styles = StyleSheet.create({
 });
 
 
-const Login = withNavigation(LoginOriginal)
+// const Login = withNavigation(LoginOriginal)
 
 export default Login
