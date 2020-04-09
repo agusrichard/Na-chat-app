@@ -1,11 +1,10 @@
 import React from 'react'
 import { db, auth } from '../../config/Firebase'
 import { StyleSheet, View, Image, ScrollView, Text } from 'react-native'
-import { withNavigation } from 'react-navigation'
 import TextField from '../../components/TextField'
 import Button from '../../components/Button'
 
-class Register extends React.Component {
+export default class Register extends React.Component {
 
   constructor(props) {
     super(props)
@@ -97,7 +96,9 @@ const styles = StyleSheet.create({
   container: {
     padding: 25,
     alignItems: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    width: '100%',
+    height: '100%'
   },
   logo: {
     marginTop: 30,
@@ -110,8 +111,3 @@ const styles = StyleSheet.create({
     marginVertical: 30
   }
 });
-
-
-// const Register = withNavigation(Register)
-
-export default Register

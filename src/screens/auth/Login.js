@@ -1,11 +1,10 @@
 import React from 'react'
 import { StyleSheet, View, Image, ScrollView, Text } from 'react-native'
-import { withNavigation } from 'react-navigation'
 import { db, auth } from '../../config/Firebase'
 import TextField from '../../components/TextField'
 import Button from '../../components/Button'
 
-class Login extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -86,7 +85,9 @@ const styles = StyleSheet.create({
   container: {
     padding: 25,
     alignItems: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    width: '100%',
+    height: '100%'
   },
   logo: {
     marginTop: 30,
@@ -99,8 +100,3 @@ const styles = StyleSheet.create({
     marginVertical: 30
   }
 });
-
-
-// const Login = withNavigation(LoginOriginal)
-
-export default Login

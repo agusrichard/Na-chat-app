@@ -1,52 +1,28 @@
 import React, { Component } from 'react'
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
 // ================= Import screens ========================
 import Splash from '../screens/Splash'
 
 // Auth Screens
+import AuthLanding from '../screens/auth/AuthLanding'
 import Register from '../screens/auth/Register'
 import Login from '../screens/auth/Login'
 
-const SplashNav = createStackNavigator({
-  Splash: {
-    screen: Splash,
-    navigationOptions: {
-      headerShown: false,
-    }
-  }
-})
-
-const AuthNav = createStackNavigator({
-  Register: {
-    screen: Register,
-    navigationOptions: {
-      headerShown: false
-    }
-  },
-  Login: {
-    screen: Login,
-    navigationOptions: {
-      headerShown: false
-    }
-  }
-})
-
-
-const SwitchNav = createSwitchNavigator({
-  SplashNav,
-  AuthNav
-})
-
-const AppContainer = createAppContainer(SwitchNav)
-
-// create a component
-class Router extends Component {
+export default class Router extends Component {
   render() {
-      return <AppContainer />
+    const Stack = createStackNavigator();
+
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Splash">
+          <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
+          <Stack.Screen name="AuthLanding" component={AuthLanding} options={{ headerShown: false }} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
   }
 }
-
-//make this component available to the app
-export default Router;
