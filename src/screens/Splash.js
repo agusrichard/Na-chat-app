@@ -1,20 +1,16 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-// import { withNavigation } from 'react-navigation';
+import { View, StyleSheet, Image } from 'react-native';
+import { withNavigation } from 'react-navigation';
 // import { connect } from 'react-redux';
 
 // create a component
 class SplashOriginal extends Component {
-    // componentDidMount() {
-    //     setTimeout(() => {
-    //         if (!this.props.auth.data.token) {
-    //             this.props.navigation.navigate('UserAuthentication')
-    //         } else {
-    //             this.props.navigation.navigate('Home')
-    //         }
-    //     }, 3000)
-    // }
+    componentDidMount() {
+        setTimeout(() => {
+            this.props.navigation.navigate('AuthLanding')
+        }, 3000)
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -40,7 +36,7 @@ const styles = StyleSheet.create({
     }
 });
 
-// let Splash = withNavigation(SplashOriginal)
+let Splash = withNavigation(SplashOriginal)
 
 // const mapStateToProps = state => {
 //     return {
@@ -50,4 +46,4 @@ const styles = StyleSheet.create({
 
 //make this component available to the app
 // export default connect(mapStateToProps)(Splash);
-export default SplashOriginal
+export default Splash

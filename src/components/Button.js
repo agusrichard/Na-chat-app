@@ -6,6 +6,7 @@ export default function Button(props) {
     <TouchableOpacity 
       style={styles.buttonContainer}
       activeOpacity={0.75}
+      onPress={props.onPress}
     >
       <Text style={styles.buttonText}>{props.title}</Text>
     </TouchableOpacity>

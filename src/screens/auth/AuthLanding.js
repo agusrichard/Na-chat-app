@@ -1,12 +1,13 @@
 import React from 'react'
 import { StyleSheet, View, Text, ImageBackground } from 'react-native'
+import { withNavigation } from 'react-navigation'
 import Button from '../../components/Button'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-export default class AuthLanding extends React.Component {
+class AuthLandingOriginal extends React.Component {
+
   render() {
     const image = require('../../assets/images/auth/authLandingPage.jpg')
-    console.log('image', image)
 
     return (
       <ImageBackground source={image} 
@@ -20,10 +21,10 @@ export default class AuthLanding extends React.Component {
             <Text style={styles.authorText}> – Steve Jobs</Text>
           </View>
           <View style={styles.buttonContainer}>
-            <Button title="Sign Up" />
+            <Button title="Sign Up" onPress={this.props.navigation.navigate('Register')}/>
             <View style={styles.signinText}>
               <Text style={{ color: '#fff' }}>Already have an account?</Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={this.props.navigation.navigate('Login')}>
                 <Text style={styles.redirectText}>Sign In</Text>
               </TouchableOpacity>
             </View>
@@ -81,3 +82,7 @@ const styles = StyleSheet.create({
     marginLeft: 10
   }
 });
+
+const AuthLanding = withNavigation(AuthLandingOriginal)
+
+export default AuthLanding

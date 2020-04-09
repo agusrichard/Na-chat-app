@@ -1,13 +1,14 @@
 import React from 'react'
-import { View, Button, StyleSheet } from 'react-native'
-import Login from './src/screens/auth/Login'
+import { View, Text } from 'react-native'
+import Router from './src/config/Router'
+import Register from './src/screens/auth/Register'
 
 export default class App extends React.Component {
 
   render() {
     return (
       <View>
-        <Login />
+        <Register />
       </View>
     )
   }

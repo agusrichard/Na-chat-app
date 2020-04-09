@@ -1,9 +1,10 @@
 import React from 'react'
 import { StyleSheet, View, Image, ScrollView } from 'react-native'
+import { withNavigation } from 'react-navigation'
 import TextField from '../../components/TextField'
 import Button from '../../components/Button'
 
-export default class Login extends React.Component {
+class LoginOriginal extends React.Component {
   state = {
     email: '',
     password: ''
@@ -13,7 +14,7 @@ export default class Login extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Image source={require('../../assets/images/auth/loginImage.jpg')} style={styles.logo} />
+          <Image source={require('../../assets/images/auth/loginImage.png')} style={styles.logo} />
           <View style={styles.formContainer}>
             <TextField 
               iconSource={require('../../assets/images/components/email.png')}
@@ -48,3 +49,8 @@ const styles = StyleSheet.create({
     marginVertical: 30
   }
 });
+
+
+const Login = withNavigation(LoginOriginal)
+
+export default Login

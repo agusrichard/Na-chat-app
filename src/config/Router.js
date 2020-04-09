@@ -1,5 +1,6 @@
-import React from 'react'
-import { createStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation-stack';
+import React, { Component } from 'react'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 
 // ================= Import screens ========================
 import Splash from '../screens/Splash'
