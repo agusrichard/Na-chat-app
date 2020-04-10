@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import { Button } from 'react-native'
 import { auth } from '../config/Firebase'
 import ProfileNavigateButton from '../components/ProfileNavigateButton'
+
 
 // ================= Import screens ========================
 import Splash from '../screens/Splash'
@@ -45,7 +45,7 @@ export default class Router extends Component {
         backBehavior="none"
       >
         <MaterialTopTabs.Screen name="Maps" component={Maps} />
-        <MaterialTopTabs.Screen 
+        <MaterialTopTabs.Screen
           name="ChatRoom" 
           component={ChatRoom}
           options={{ title: 'Chat Room' }}

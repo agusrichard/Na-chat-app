@@ -12,7 +12,7 @@ export default class Chats extends React.Component {
     }
 
     this.user = auth.currentUser
-    this.friend = this.props.friend
+    this.friend = this.props.route.params.friend
     this.chatRef = db.ref('messages/' + this.generateChatId())
     this.chatRefData = this.chatRef.orderByChild('order')
   }
@@ -55,8 +55,6 @@ export default class Chats extends React.Component {
         order: -1 * now
       })
     })
-    auth.signOut()
-    this.props.navigation.navigate('Register')
   }
 
   componentDidMount() {

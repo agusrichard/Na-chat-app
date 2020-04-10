@@ -44,7 +44,7 @@ export default class Friends extends React.Component {
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           { this.state.users.map((user, i) => (
-            <UserCard user={user} key={i} onPress={() => this.props.navigation.navigate('Chats')} friend={user} />
+            <UserCard user={user} key={i} onPress={() => this.props.navigation.navigate('Chats', { friend: user })} />
           )) }
         </ScrollView>
       </View>
