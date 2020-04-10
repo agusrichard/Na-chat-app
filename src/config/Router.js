@@ -9,6 +9,7 @@ import Splash from '../screens/Splash'
 import AuthLanding from '../screens/auth/AuthLanding'
 import Register from '../screens/auth/Register'
 import Login from '../screens/auth/Login'
+import Profile from '../screens/user/Profile'
 import Chats from '../screens/main/Chats'
 
 export default class Router extends Component {
@@ -22,6 +23,7 @@ export default class Router extends Component {
           <Stack.Screen name="AuthLanding" component={AuthLanding} options={{ headerShown: false }} />
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Chats" component={Chats} />
         </Stack.Navigator>
       </NavigationContainer>

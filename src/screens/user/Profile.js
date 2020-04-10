@@ -1,13 +1,20 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import ProfileChoice from '../../components/ProfileChoice'
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import { auth } from '../../config/Firebase'
 
 
 export default class Profile extends React.Component {
+
+  handleLogout = () => {
+    auth.signOut()
+    this.props.navigation.navigate('Register')
+  }
+
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
           <Image 
             source={require('../../assets/images/components/account.png')} 
@@ -48,12 +55,12 @@ export default class Profile extends React.Component {
           />
         </View>
         <View style={styles.logout}>
-          <TouchableOpacity style={{ flexDirection: 'row' }}>
+          <TouchableOpacity style={{ flexDirection: 'row' }} >
             <Icon name="sign-out-alt" size={25} style={{ marginRight: 15 }} color="red" />
             <Text style={{ color: 'red', fontSize: 20 }}>Sign Out</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }

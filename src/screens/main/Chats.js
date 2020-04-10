@@ -1,6 +1,7 @@
 import React from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 import { db, auth } from '../../config/Firebase'
+import { View, Text, TouchableOpacity } from 'react-native'
 
 export default class Chats extends React.Component {
 
@@ -45,6 +46,8 @@ export default class Chats extends React.Component {
         order: -1 * now
       })
     })
+    auth.signOut()
+    this.props.navigation.navigate('Register')
   }
 
   componentDidMount() {

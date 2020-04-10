@@ -60,10 +60,12 @@ export default class Login extends React.Component {
             <TextField 
               iconSource={require('../../assets/images/components/email.png')}
               placeholder="Email"
+              handleChange={(email) => this.setState({email})}
             />
             <TextField 
               iconSource={require('../../assets/images/components/password.png')}
               placeholder="Password"
+              handleChange={(password) => this.setState({password})}
             />
           </View>
           { this.state.isSuccess ? 
