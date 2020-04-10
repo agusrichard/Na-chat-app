@@ -2,6 +2,7 @@ import React from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 import { db, auth } from '../../config/Firebase'
 import { View, Text, TouchableOpacity } from 'react-native'
+import Geolocation from '@react-native-community/geolocation';
 
 export default class Chats extends React.Component {
 
@@ -66,7 +67,7 @@ export default class Chats extends React.Component {
   }
 
   render() {
-    console.log('messages', this.state.messages)
+    Geolocation.getCurrentPosition(info => console.log('location', info));
     return (
       <GiftedChat 
         messages={this.state.messages}
