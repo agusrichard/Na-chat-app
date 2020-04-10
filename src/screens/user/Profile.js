@@ -2,17 +2,36 @@ import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import ProfileChoice from '../../components/ProfileChoice'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { auth } from '../../config/Firebase'
+import { db, auth } from '../../config/Firebase'
 
 
 export default class Profile extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: {}
+    }
+  }
 
   handleLogout = () => {
     auth.signOut()
     this.props.navigation.navigate('Splash')
   }
 
+  componentDidMount() {
+    db.ref('users').on('value', snap => {
+      snap.forEach(item => {
+        if (auth.currentUser.uid === item.val().uid) {
+          console.log('item', item.val())
+          this.setState({ user: item.val() })
+        }
+      })
+    })
+  }
+
   render() {
+    console.log('user', this.state.user)
     return (
       <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
@@ -21,7 +40,7 @@ export default class Profile extends React.Component {
             style={styles.userImage}
           />
           <View style={styles.textBox}>
-            <Text style={styles.name}>Agus Richard Lubis</Text>
+            <Text style={styles.name}>{this.state.user.name}</Text>
             <Text style={styles.username}>@agusrichard</Text>
           </View>
         </View>

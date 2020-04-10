@@ -20,7 +20,9 @@ export default class Friends extends React.Component {
     usersRef.on('value', (snap) => {
       let items = []
       snap.forEach(item => {
-        items.push(item.val())
+        if (this.user.uid !== item.val().uid) {
+          items.push(item.val())
+        }
       })
 
       this.setState({
@@ -34,7 +36,7 @@ export default class Friends extends React.Component {
   }
 
   componentWillUnmount() {
-
+    this.ref.off()
   }
 
   render() {
@@ -42,7 +44,7 @@ export default class Friends extends React.Component {
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           { this.state.users.map((user, i) => (
-            <UserCard user={user} key={i}/>
+            <UserCard user={user} key={i} onPress={() => this.props.navigation.navigate('Chats')} friend={user} />
           )) }
         </ScrollView>
       </View>

@@ -1,10 +1,10 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 
 export default function UserCard(props) {
   console.log('user', props.user)
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <Image 
         source={require('../assets/images/components/account.png')}
         style={styles.userImage}
@@ -13,7 +13,7 @@ export default function UserCard(props) {
         <Text style={styles.name}>{props.user.name}</Text>
         <Text style={styles.status}>I am having fun bitch!</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

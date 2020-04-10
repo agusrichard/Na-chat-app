@@ -12,8 +12,17 @@ export default class Chats extends React.Component {
     }
 
     this.user = auth.currentUser
-    this.chatRef = db.ref('messages')
+    this.friend = this.props.friend
+    this.chatRef = db.ref('messages/' + this.generateChatId())
     this.chatRefData = this.chatRef.orderByChild('order')
+  }
+
+  generateChatId = () => {
+    if (this.user.uid > this.friend.uid) {
+      return `${this.user.uid}-${this.friend.uid}`
+    } else {
+      return `${this.friend.uid}-${this.user.uid}`
+    }
   }
 
   listenForChats(chatRef) {
