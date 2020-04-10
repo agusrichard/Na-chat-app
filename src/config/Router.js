@@ -55,7 +55,7 @@ export default class Router extends Component {
     )
   }
 
-  createStack = (props) => {
+  createStack = () => {
     return (
       <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
@@ -81,7 +81,7 @@ export default class Router extends Component {
                   },
                   headerTintColor: '#fff',
                   headerRight: () => (
-                    <ProfileNavigateButton onPress={props}/>
+                    <ProfileNavigateButton />
                   )
                 }}
               />
