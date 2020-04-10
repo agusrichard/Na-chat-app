@@ -22,18 +22,18 @@ export default class Register extends React.Component {
 
   onAuthStateChanged = (user) => {
     if (user) {
-        db.ref().child('users').push({
-            email: user.email,
-            uid: user.uid,
-            name: this.state.name
-        })
-        this.setState({
-            isLoading: false,
-            isSuccess: true
-        })
-        this.props.navigation.navigate('Chats')
+      db.ref().child('users').push({
+          email: user.email,
+          uid: user.uid,
+          name: this.state.name
+      })
+      this.setState({
+          isLoading: false,
+          isSuccess: true
+      })
+      this.props.navigation.navigate('TopTabs')
     }
-}
+  }
 
   register = () => {
     this.setState({
