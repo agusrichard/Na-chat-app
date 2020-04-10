@@ -9,6 +9,6 @@ import Chats from './src/screens/main/Chats'
 export default class App extends React.Component {
 
   render() {
-    return <Chats />
+    return <Router />
   }
 }

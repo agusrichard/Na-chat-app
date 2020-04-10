@@ -16,21 +16,6 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* NaChatAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NaChatAppTests.m */; };
-		05C66D9D54FF403C94250EA4 /* ComicNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8070300C9CB344FFA1A2987E /* ComicNeue-Bold.ttf */; };
-		EC3AB0BD201F47FA8883B3AF /* ComicNeue-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 971E780641D144B1801C1E3A /* ComicNeue-BoldItalic.ttf */; };
-		D87545E8C20F4ACB879CD656 /* ComicNeue-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 669BD74522A54DCD9EAC861B /* ComicNeue-Italic.ttf */; };
-		4C22FA4822D24C7A8A53C084 /* ComicNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84AE7FB702D149408AB7568C /* ComicNeue-Light.ttf */; };
-		CEE75E3705644A549A8127A1 /* ComicNeue-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A51FD1371174751B354A2A9 /* ComicNeue-LightItalic.ttf */; };
-		46B261293D7647B09239560C /* ComicNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10D50147E72B477089572959 /* ComicNeue-Regular.ttf */; };
-		5BE6C2754A4D45BC9DB8F9EB /* Rokkitt-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4213D43AEFEB45B9A8B9817C /* Rokkitt-Black.ttf */; };
-		B99AAC39811942F79D28BFC8 /* Rokkitt-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59AE344B559642248ECA866B /* Rokkitt-Bold.ttf */; };
-		0C3FC34233EB4E78A4F09D74 /* Rokkitt-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D834E2430F9647A6932AAAC7 /* Rokkitt-ExtraBold.ttf */; };
-		3B8EF9F3965C491EABBE6997 /* Rokkitt-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84F84A9385EE467EBF75F611 /* Rokkitt-ExtraLight.ttf */; };
-		9E28A103D288407F90B86F4B /* Rokkitt-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C02E9EC9A3EA4FD2BD33C480 /* Rokkitt-Light.ttf */; };
-		40C919737E434081861DC2E2 /* Rokkitt-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE2D3882699742559DB6DD2D /* Rokkitt-Medium.ttf */; };
-		7B7281E915604C60A150E8CD /* Rokkitt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87D4CE23333E405B82742812 /* Rokkitt-Regular.ttf */; };
-		AD77596B7A814DCAA72B1716 /* Rokkitt-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC7826DC45F04C729E251C75 /* Rokkitt-SemiBold.ttf */; };
-		1B68D99FEFC648DE8FAED11C /* Rokkitt-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A9DC11F7C4C34B14A6C4A /* Rokkitt-Thin.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,21 +51,6 @@
 		2D02E4901E0B4A5D006451C7 /* NaChatApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NaChatApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		8070300C9CB344FFA1A2987E /* ComicNeue-Bold.ttf */ = {isa = PBXFileReference; name = "ComicNeue-Bold.ttf"; path = "../src/assets/fonts/ComicNeue-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		971E780641D144B1801C1E3A /* ComicNeue-BoldItalic.ttf */ = {isa = PBXFileReference; name = "ComicNeue-BoldItalic.ttf"; path = "../src/assets/fonts/ComicNeue-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		669BD74522A54DCD9EAC861B /* ComicNeue-Italic.ttf */ = {isa = PBXFileReference; name = "ComicNeue-Italic.ttf"; path = "../src/assets/fonts/ComicNeue-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		84AE7FB702D149408AB7568C /* ComicNeue-Light.ttf */ = {isa = PBXFileReference; name = "ComicNeue-Light.ttf"; path = "../src/assets/fonts/ComicNeue-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3A51FD1371174751B354A2A9 /* ComicNeue-LightItalic.ttf */ = {isa = PBXFileReference; name = "ComicNeue-LightItalic.ttf"; path = "../src/assets/fonts/ComicNeue-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		10D50147E72B477089572959 /* ComicNeue-Regular.ttf */ = {isa = PBXFileReference; name = "ComicNeue-Regular.ttf"; path = "../src/assets/fonts/ComicNeue-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4213D43AEFEB45B9A8B9817C /* Rokkitt-Black.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Black.ttf"; path = "../src/assets/fonts/Rokkitt-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		59AE344B559642248ECA866B /* Rokkitt-Bold.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Bold.ttf"; path = "../src/assets/fonts/Rokkitt-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D834E2430F9647A6932AAAC7 /* Rokkitt-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Rokkitt-ExtraBold.ttf"; path = "../src/assets/fonts/Rokkitt-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		84F84A9385EE467EBF75F611 /* Rokkitt-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Rokkitt-ExtraLight.ttf"; path = "../src/assets/fonts/Rokkitt-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C02E9EC9A3EA4FD2BD33C480 /* Rokkitt-Light.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Light.ttf"; path = "../src/assets/fonts/Rokkitt-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BE2D3882699742559DB6DD2D /* Rokkitt-Medium.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Medium.ttf"; path = "../src/assets/fonts/Rokkitt-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		87D4CE23333E405B82742812 /* Rokkitt-Regular.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Regular.ttf"; path = "../src/assets/fonts/Rokkitt-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AC7826DC45F04C729E251C75 /* Rokkitt-SemiBold.ttf */ = {isa = PBXFileReference; name = "Rokkitt-SemiBold.ttf"; path = "../src/assets/fonts/Rokkitt-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6E2A9DC11F7C4C34B14A6C4A /* Rokkitt-Thin.ttf */ = {isa = PBXFileReference; name = "Rokkitt-Thin.ttf"; path = "../src/assets/fonts/Rokkitt-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +140,6 @@
 				00E356EF1AD99517003FC87E /* NaChatAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				ED4E788C72E247269FB38222 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -187,29 +156,6 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
-		};
-		ED4E788C72E247269FB38222 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				8070300C9CB344FFA1A2987E /* ComicNeue-Bold.ttf */,
-				971E780641D144B1801C1E3A /* ComicNeue-BoldItalic.ttf */,
-				669BD74522A54DCD9EAC861B /* ComicNeue-Italic.ttf */,
-				84AE7FB702D149408AB7568C /* ComicNeue-Light.ttf */,
-				3A51FD1371174751B354A2A9 /* ComicNeue-LightItalic.ttf */,
-				10D50147E72B477089572959 /* ComicNeue-Regular.ttf */,
-				4213D43AEFEB45B9A8B9817C /* Rokkitt-Black.ttf */,
-				59AE344B559642248ECA866B /* Rokkitt-Bold.ttf */,
-				D834E2430F9647A6932AAAC7 /* Rokkitt-ExtraBold.ttf */,
-				84F84A9385EE467EBF75F611 /* Rokkitt-ExtraLight.ttf */,
-				C02E9EC9A3EA4FD2BD33C480 /* Rokkitt-Light.ttf */,
-				BE2D3882699742559DB6DD2D /* Rokkitt-Medium.ttf */,
-				87D4CE23333E405B82742812 /* Rokkitt-Regular.ttf */,
-				AC7826DC45F04C729E251C75 /* Rokkitt-SemiBold.ttf */,
-				6E2A9DC11F7C4C34B14A6C4A /* Rokkitt-Thin.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -247,7 +193,7 @@
 			dependencies = (
 			);
 			name = NaChatApp;
-			productName = NaChatApp;
+			productName = "NaChatApp";
 			productReference = 13B07F961A680F5B00A75B9A /* NaChatApp.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -294,14 +240,12 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
-					};
-					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -316,7 +260,7 @@
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "NaChatApp" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = en;
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -349,21 +293,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				05C66D9D54FF403C94250EA4 /* ComicNeue-Bold.ttf in Resources */,
-				EC3AB0BD201F47FA8883B3AF /* ComicNeue-BoldItalic.ttf in Resources */,
-				D87545E8C20F4ACB879CD656 /* ComicNeue-Italic.ttf in Resources */,
-				4C22FA4822D24C7A8A53C084 /* ComicNeue-Light.ttf in Resources */,
-				CEE75E3705644A549A8127A1 /* ComicNeue-LightItalic.ttf in Resources */,
-				46B261293D7647B09239560C /* ComicNeue-Regular.ttf in Resources */,
-				5BE6C2754A4D45BC9DB8F9EB /* Rokkitt-Black.ttf in Resources */,
-				B99AAC39811942F79D28BFC8 /* Rokkitt-Bold.ttf in Resources */,
-				0C3FC34233EB4E78A4F09D74 /* Rokkitt-ExtraBold.ttf in Resources */,
-				3B8EF9F3965C491EABBE6997 /* Rokkitt-ExtraLight.ttf in Resources */,
-				9E28A103D288407F90B86F4B /* Rokkitt-Light.ttf in Resources */,
-				40C919737E434081861DC2E2 /* Rokkitt-Medium.ttf in Resources */,
-				7B7281E915604C60A150E8CD /* Rokkitt-Regular.ttf in Resources */,
-				AD77596B7A814DCAA72B1716 /* Rokkitt-SemiBold.ttf in Resources */,
-				1B68D99FEFC648DE8FAED11C /* Rokkitt-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,13 +490,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_BITCODE = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"FB_SONARKIT_ENABLED=1",
-				);
+				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = NaChatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -577,8 +501,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = NaChatApp;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -587,7 +509,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = NaChatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -598,7 +519,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = NaChatApp;
-				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -622,7 +542,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.NaChatApp-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.NaChatApp-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -649,7 +569,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.NaChatApp-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.NaChatApp-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -675,7 +595,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.NaChatApp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.NaChatApp-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaChatApp-tvOS.app/NaChatApp-tvOS";
@@ -701,7 +621,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.NaChatApp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.NaChatApp-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaChatApp-tvOS.app/NaChatApp-tvOS";
@@ -713,7 +633,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -757,12 +676,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -773,7 +686,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -810,12 +722,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

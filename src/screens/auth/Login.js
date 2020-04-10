@@ -26,6 +26,7 @@ export default class Login extends React.Component {
           isLoading: false,
           isSuccess: true
       })
+      this.props.navigation.navigate('Chats')
     }
   }
 
