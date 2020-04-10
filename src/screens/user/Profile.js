@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
   },
   logout: {
     marginTop: 20,
+    marginBottom: 30,
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'center',

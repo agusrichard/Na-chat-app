@@ -24,7 +24,8 @@ import ChatRoom from '../screens/main/ChatRoom'
 import Chats from '../screens/main/Chats'
 
 // Creating Navigator
-const MaterialTopTabs = createMaterialTopTabNavigator();;
+const MaterialTopTabs = createMaterialTopTabNavigator();
+const Stack = createStackNavigator();
 
 
 export default class Router extends Component {
@@ -54,21 +55,9 @@ export default class Router extends Component {
     )
   }
 
-  onAuthStateChanged = (user) => {
-    console.log('User in router', user)
-    if (user) {
-      console.log('will this ran?')
-      this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }))
-    }
-  }
-
-  render() {
-    const Stack = createStackNavigator();
-    console.log('is user logged in', this.state.isLoggedIn)
-
+  createStack = (props) => {
     return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Splash">
+      <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
           { 
             !this.state.isLoggedIn ? 
@@ -92,15 +81,32 @@ export default class Router extends Component {
                   },
                   headerTintColor: '#fff',
                   headerRight: () => (
-                    <ProfileNavigateButton />
+                    <ProfileNavigateButton onPress={props}/>
                   )
                 }}
               />
               <Stack.Screen name="Profile" component={Profile} />
               <Stack.Screen name="Chats" component={Chats} />
-           </>
+            </>
           }
-        </Stack.Navigator>
+      </Stack.Navigator>
+    )
+  }
+
+  onAuthStateChanged = (user) => {
+    console.log('User in router', user)
+    if (user) {
+      console.log('will this ran?')
+      this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }))
+    }
+  }
+
+  render() {
+    console.log('is user logged in', this.state.isLoggedIn)
+
+    return (
+      <NavigationContainer>
+        {this.createStack()}
       </NavigationContainer>
     )
   }

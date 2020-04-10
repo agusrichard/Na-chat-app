@@ -1,12 +1,13 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 
 export default function ProfileNavigateButton(props) {
-  console.log('ProfileNavigateButton', props)
+  const navigation = useNavigation();
 
   return (
     <TouchableOpacity 
-      onPress={props.onPress}
+      onPress={() => navigation.navigate('Profile')}
       style={styles.container}
     >
       <Image 
