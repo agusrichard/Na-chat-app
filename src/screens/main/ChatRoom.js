@@ -1,12 +1,21 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { StyleSheet, ScrollView, Text } from 'react-native'
+import ChatCard from '../../components/ChatCard'
 
 export default class ChatRoom extends React.Component {
   render() {
     return (
-      <View>
-        <Text>Chat Room Tab</Text>
-      </View>
+      <ScrollView contentContainerStyle={styles.container}>
+        <ChatCard />
+        <ChatCard />
+        <ChatCard />
+      </ScrollView>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 15
+  }
+})

@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, View, Text, Image } from 'react-native'
 
 export default function UserCard(props) {
+  console.log('user', props.user)
   return (
     <View style={styles.container}>
       <Image 
@@ -9,7 +10,7 @@ export default function UserCard(props) {
         style={styles.userImage}
       />
       <View>
-        <Text style={styles.name}>Agus Richard Lubis</Text>
+        <Text style={styles.name}>{props.user.name}</Text>
         <Text style={styles.status}>I am having fun bitch!</Text>
       </View>
     </View>

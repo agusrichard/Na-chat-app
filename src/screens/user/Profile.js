@@ -9,7 +9,7 @@ export default class Profile extends React.Component {
 
   handleLogout = () => {
     auth.signOut()
-    this.props.navigation.navigate('Register')
+    this.props.navigation.navigate('Splash')
   }
 
   render() {
@@ -55,7 +55,7 @@ export default class Profile extends React.Component {
           />
         </View>
         <View style={styles.logout}>
-          <TouchableOpacity style={{ flexDirection: 'row' }} >
+          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={ () => this.handleLogout() }>
             <Icon name="sign-out-alt" size={25} style={{ marginRight: 15 }} color="red" />
             <Text style={{ color: 'red', fontSize: 20 }}>Sign Out</Text>
           </TouchableOpacity>
