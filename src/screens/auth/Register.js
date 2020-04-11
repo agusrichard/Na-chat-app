@@ -76,15 +76,11 @@ export default class Register extends React.Component {
               handleChange={(name) => this.setState({name})}
             />
           </View>
-          { this.state.isSuccess ? 
-            <Text>Success</Text>
-            :
-            <Button 
-              title="Sign Up"
-              isLoading={this.state.isLoading}
-              onPress={() => this.register()}
-            />
-          }
+          <Button 
+            title="Sign Up"
+            isLoading={this.state.isLoading}
+            onPress={() => this.register()}
+          />
         </ScrollView>
       </View>
     )

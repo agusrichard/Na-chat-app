@@ -10,8 +10,8 @@ export default function ChatCard(props) {
         style={styles.userImage}
       />
       <View>
-        <Text>Agus Richard</Text>
-        <Text>Something in here</Text>
+        <Text>{props.chat.name}</Text>
+        <Text>{props.chat.text}</Text>
       </View>
     </View>
   )
