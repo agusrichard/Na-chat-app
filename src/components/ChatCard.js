@@ -4,7 +4,7 @@ import { StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native'
 export default function ChatCard(props) {
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <Image 
         source={require('../assets/images/components/account.png')}
         style={styles.userImage}
@@ -13,7 +13,7 @@ export default function ChatCard(props) {
         <Text>{props.chat.name}</Text>
         <Text>{props.chat.text}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

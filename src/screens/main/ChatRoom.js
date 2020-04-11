@@ -31,7 +31,7 @@ export default class ChatRoom extends React.Component {
             db.ref('users/' + userId).on('value', snap => {
               console.log('user snap', Object.values(snap.val())[0].name)
               var name = Object.values(snap.val())[0].name
-              items.push({ name: name, text: text })
+              items.push({ name: name, text: text, userId: userId  })
             })
           }
         }
@@ -55,7 +55,7 @@ export default class ChatRoom extends React.Component {
       <ScrollView contentContainerStyle={styles.container}>
         { this.state.chats.length !== 0 ?
           this.state.chats.map((chat, i) => (
-            <ChatCard key={i} chat={chat} />
+            <ChatCard key={i} chat={chat} onPress={() => this.props.navigation.navigate('Chats', { friend: { uid: chat.userId } })}/>
           )) :
           <Text style={styles.text}>No Chats</Text>
         }
