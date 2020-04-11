@@ -22,7 +22,7 @@ export default class Register extends React.Component {
 
   onAuthStateChanged = (user) => {
     if (user) {
-      db.ref().child('users').push({
+      db.ref().child('users/' + user.uid).push({
           email: user.email,
           uid: user.uid,
           name: this.state.name

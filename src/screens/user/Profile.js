@@ -20,14 +20,21 @@ export default class Profile extends React.Component {
   }
 
   componentDidMount() {
-    db.ref('users').on('value', snap => {
-      snap.forEach(item => {
-        if (auth.currentUser.uid === item.val().uid) {
-          console.log('item', item.val())
-          this.setState({ user: item.val() })
-        }
-      })
+    const userId = auth.currentUser.uid
+    console.log('userId', userId)
+    db.ref('users/' + userId).on('value', snap => {
+      console.log('snap', snap)
+      this.setState({ user: Object.values(snap.val())[0] })
     })
+    console.log('user', this.state.user)
+    // db.ref('users').on('value', snap => {
+    //   snap.forEach(item => {
+    //     if (auth.currentUser.uid === item.val().uid) {
+    //       console.log('item', item.val())
+    //       this.setState({ user: item.val() })
+    //     }
+    //   })
+    // })
   }
 
   render() {
@@ -41,13 +48,13 @@ export default class Profile extends React.Component {
           />
           <View style={styles.textBox}>
             <Text style={styles.name}>{this.state.user.name}</Text>
-            <Text style={styles.username}>@agusrichard</Text>
+            <Text style={styles.username}>{this.state.user.email}</Text>
           </View>
         </View>
-        <View style={styles.secondContainer}>
+        {/* <View style={styles.secondContainer}>
           <Text style={[styles.friendText, {borderRightColor: '#cf03fc', borderRightWidth: StyleSheet.hairlineWidth, borderTopRightRadius: 5}]}>Friends</Text>
           <Text style={[styles.friendText, {borderLeftColor: '#cf03fc', borderLeftWidth: StyleSheet.hairlineWidth, borderTopLeftRadius: 5}]}>99</Text>
-        </View>
+        </View> */}
         <View style={styles.statusContainer}>
           <Text style={{ fontSize: 20, marginBottom: 10, fontWeight: 'bold' }}>Status:</Text>
           <Text>
@@ -110,7 +117,7 @@ const styles = StyleSheet.create({
   },
   username: {
     fontFamily: 'ComicNeue-Italic',
-    fontSize: 18
+    fontSize: 15
   },
   secondContainer: {
     flexDirection: 'row',

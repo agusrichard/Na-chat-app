@@ -59,36 +59,29 @@ export default class Router extends Component {
     return (
       <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
-          { 
-            !this.state.isLoggedIn ? 
-            <>
-              <Stack.Screen name="AuthLanding" component={AuthLanding} options={{ headerShown: false }} />
-              <Stack.Screen name="Register" component={Register} />
-              <Stack.Screen name="Login" component={Login} />
-            </> : 
-            <>
-              <Stack.Screen 
-                name="TopTabs" 
-                children={this.createTopTabs}
-                options={{ 
-                  title: 'Na?',
-                  headerLeft: null,
-                  headerStyle: {
-                    backgroundColor: '#dcaaf0'
-                  },
-                  headerTitleStyle: {
-                    fontSize: 26
-                  },
-                  headerTintColor: '#fff',
-                  headerRight: () => (
-                    <ProfileNavigateButton />
-                  )
-                }}
-              />
-              <Stack.Screen name="Profile" component={Profile} />
-              <Stack.Screen name="Chats" component={Chats} />
-            </>
-          }
+          <Stack.Screen name="AuthLanding" component={AuthLanding} options={{ headerShown: false }} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen 
+            name="TopTabs" 
+            children={this.createTopTabs}
+            options={{ 
+              title: 'Na?',
+              headerLeft: null,
+              headerStyle: {
+                backgroundColor: '#dcaaf0'
+              },
+              headerTitleStyle: {
+                fontSize: 26
+              },
+              headerTintColor: '#fff',
+              headerRight: () => (
+                <ProfileNavigateButton />
+              )
+            }}
+          />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Chats" component={Chats} />
       </Stack.Navigator>
     )
   }
