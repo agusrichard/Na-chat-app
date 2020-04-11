@@ -46,15 +46,21 @@ export default class Chats extends React.Component {
   }
 
   onSend = (messages = []) => {
+    console.log('messages', messages)
     messages.forEach(message => {
       var now = new Date().getTime()
-      this.chatRef.push({
-        _id: now,
-        text: message.text,
-        createdAt: now,
-        uid: this.user.uid,
-        order: -1 * now
-      })
+      Geolocation.getCurrentPosition(info => {
+        this.chatRef.push({
+          _id: now,
+          text: message.text,
+          createdAt: now,
+          uid: this.user.uid,
+          order: -1 * now,
+          coords: info.coords
+        })
+        console.log('latitude', info.coords.latitude)
+        console.log('longitude', info.coords.longitude)
+      });
     })
   }
 
@@ -67,7 +73,10 @@ export default class Chats extends React.Component {
   }
 
   render() {
-    Geolocation.getCurrentPosition(info => console.log('location', info));
+    Geolocation.getCurrentPosition(info => {
+      console.log('latitude', info.coords.latitude)
+      console.log('longitude', info.coords.longitude)
+    });
     return (
       <GiftedChat 
         messages={this.state.messages}
