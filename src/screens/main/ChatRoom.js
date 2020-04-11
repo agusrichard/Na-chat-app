@@ -4,6 +4,7 @@ import ChatCard from '../../components/ChatCard'
 
 export default class ChatRoom extends React.Component {
   render() {
+
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <ChatCard />

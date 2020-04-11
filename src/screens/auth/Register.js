@@ -16,24 +16,8 @@ export default class Register extends React.Component {
       errorMessage: '',
       isSuccess: false
     }
-
-    auth.onAuthStateChanged(this.onAuthStateChanged)
   }
 
-  onAuthStateChanged = (user) => {
-    if (user) {
-      db.ref().child('users/' + user.uid).push({
-          email: user.email,
-          uid: user.uid,
-          name: this.state.name
-      })
-      this.setState({
-          isLoading: false,
-          isSuccess: true
-      })
-      this.props.navigation.navigate('TopTabs')
-    }
-  }
 
   register = () => {
     this.setState({
@@ -43,6 +27,21 @@ export default class Register extends React.Component {
     const {email, password} = this.state;
     auth
       .createUserWithEmailAndPassword(email, password)
+      .then(cred => {
+        db.ref('users/' + cred.user.uid).push({
+          email: this.state.email,
+          uid: cred.user.uid,
+          name: this.state.name
+        })
+        this.setState({
+            isLoading: false,
+            isSuccess: true,
+            name: '',
+            email: '',
+            password: ''
+        })
+        this.props.navigation.navigate('TopTabs')
+      })
       .catch((error) => {
           // Handle Errors here.
           const errorCode = error.code;

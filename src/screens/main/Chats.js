@@ -58,8 +58,9 @@ export default class Chats extends React.Component {
           order: -1 * now,
           coords: info.coords
         })
-        console.log('latitude', info.coords.latitude)
-        console.log('longitude', info.coords.longitude)
+        var updates = {};
+        updates['/users/' + this.user.uid + '/coords'] = info.coords;
+        db.ref().update(updates)
       });
     })
   }
