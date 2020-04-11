@@ -1,25 +1,28 @@
 import React, { useState } from 'react'
-import { StyleSheet, TextInput, View, Image } from 'react-native'
+import { StyleSheet, TextInput, View, Image, Text } from 'react-native'
 
 export default function TextField(props) {
   const [color, setColor] = useState('#999')
 
   return (
-    <View style={[styles.container, {borderBottomColor: color}]}>
-      <Image 
-        source={props.iconSource} 
-        style={styles.icon}
-      />
-      <TextInput 
-        placeholder={props.placeholder}
-        onChangeText={props.handleChange}
-        value={props.value}
-        secureTextEntry={ props.placeholder === 'Password' ? true : false }
-        style={styles.textInput}
-        onFocus={() => setColor('#951dd1')}
-        onBlur={() => setColor('#999')}
-      />
-    </View>
+    <>
+      <View style={[styles.container, {borderBottomColor: color}]}>
+        <Image 
+          source={props.iconSource} 
+          style={styles.icon}
+        />
+        <TextInput 
+          placeholder={props.placeholder}
+          onChangeText={props.handleChange}
+          value={props.value}
+          secureTextEntry={ props.placeholder === 'Password' ? true : false }
+          style={styles.textInput}
+          onFocus={() => setColor('#951dd1')}
+          onBlur={() => setColor('#999')}
+        />
+      </View>
+      { props.errorMessage !== '' && <Text style={{ color: 'red' }}>{props.errorMessage}</Text>}
+    </>
   )
 }
 

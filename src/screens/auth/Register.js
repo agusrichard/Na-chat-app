@@ -18,6 +18,15 @@ export default class Register extends React.Component {
     }
   }
 
+  handleValidation = () => {
+    const { name, email, password } = this.state
+    if (name && email && password) {
+      this.setState({
+        errorMessage
+      })
+    }
+  }
+
 
   register = () => {
     this.setState({
@@ -48,7 +57,7 @@ export default class Register extends React.Component {
           const errorMessage = error.message;
           console.log('Error in register:', errorMessage)
           this.setState({
-              errorMessage,
+              errorMessage: 'Cannot be empty',
               isLoading: false
           })
       });
@@ -64,16 +73,19 @@ export default class Register extends React.Component {
               iconSource={require('../../assets/images/components/email.png')}
               placeholder="Email"
               handleChange={(email) => this.setState({email})}
+              errorMessage={this.state.errorMessage}
             />
             <TextField 
               iconSource={require('../../assets/images/components/password.png')}
               placeholder="Password"
               handleChange={(password) => this.setState({password})}
+              errorMessage={this.state.errorMessage}
             />
             <TextField 
               iconSource={require('../../assets/images/components/name.png')}
               placeholder="Name"
               handleChange={(name) => this.setState({name})}
+              errorMessage={this.state.errorMessage}
             />
           </View>
           <Button 

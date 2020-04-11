@@ -45,7 +45,7 @@ export default class Login extends React.Component {
         var errorMessage = error.message;
         console.log(errorMessage)
         this.setState({
-            errorMessage,
+            errorMessage: 'Cannot be empty',
             isLoading: false
         })
       });
@@ -61,11 +61,13 @@ export default class Login extends React.Component {
               iconSource={require('../../assets/images/components/email.png')}
               placeholder="Email"
               handleChange={(email) => this.setState({email})}
+              errorMessage={this.state.errorMessage}
             />
             <TextField 
               iconSource={require('../../assets/images/components/password.png')}
               placeholder="Password"
               handleChange={(password) => this.setState({password})}
+              errorMessage={this.state.errorMessage}
             />
           </View>
           { this.state.isSuccess ? 
