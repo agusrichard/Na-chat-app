@@ -16,13 +16,16 @@ export default class EditProfile extends React.Component {
       name: '',
       status: '',
       date: '',
+      fileName: '',
+      fileType: '',
+      fileUri: '',
       filePath: ''
     }
   }
 
   handleSubmit = () => {
     console.log('submit')
-    const { name, status, date, user } = this.state
+    const { name, status, date, user, fileName } = this.state
     const userId = auth.currentUser.uid
     var key = ''
     db.ref('users/' + userId).once('value', snap => {
@@ -31,12 +34,21 @@ export default class EditProfile extends React.Component {
       const user = Object.values(snap.val())[0]
       console.log('user', user)
     })
+    this.uriToBlob(this.state.fileUri)
+      .then((blob)=>{
+      return this.uploadToFirebase(blob);
+    }).then((snapshot)=>{
+      console.log("File uploaded");
+    }).catch((error)=>{
+      throw error;
+    })
     var updates = {};
     updates['/users/' + userId + '/' + key] = { 
       ...user, 
       name: name !== '' ? name : user.name, 
       status: status !== '' ? status : user.status,
-      date: date !== '' ? date : user.date
+      date: date !== '' ? date : user.date,
+      image: fileName
     };
     db.ref().update(updates)
     this.props.navigation.navigate('Profile')
@@ -70,10 +82,45 @@ export default class EditProfile extends React.Component {
         console.log('source', source.fileName)
         this.setState({
           filePath: source,
+          fileName: source.fileName,
+          fileType: source.type,
+          fileUri: source.uri
         });
       }
     });
   };
+
+  uriToBlob = (uri) => {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+        // return the blob
+        resolve(xhr.response);
+      };
+      xhr.onerror = function() {
+        // something went wrong
+        reject(new Error('uriToBlob failed'));
+      };
+      // this helps us get a blob
+      xhr.responseType = 'blob';
+      xhr.open('GET', uri, true);
+      xhr.send(null);
+    });
+  }
+
+  uploadToFirebase = (blob) => {
+    return new Promise((resolve, reject)=>{
+      var storageRef = storage.ref();
+      storageRef.child('uploads/photo.jpg').put(blob, {
+        contentType: 'image/jpeg'
+      }).then((snapshot)=>{
+        blob.close();
+        resolve(snapshot);
+      }).catch((error)=>{
+        reject(error);
+      });
+    });
+  }
 
   componentDidMount() {
     const userId = auth.currentUser.uid

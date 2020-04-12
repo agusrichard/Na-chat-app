@@ -47,7 +47,13 @@ export default class Profile extends React.Component {
             </View>
             <View style={styles.birthday}>
               <Icon name="birthday-cake" color="purple" size={20}/>
-              <Text style={styles.birthdayText}>{moment(this.state.user.date).locale('en-gb').format('LL')}</Text>
+              <Text style={styles.birthdayText}>
+                { this.state.user.date !== '' ? 
+                  moment(this.state.user.date).locale('en-gb').format('LL') 
+                : 
+                  '-----'
+                }
+              </Text>
             </View>
           </View>
         </View>
