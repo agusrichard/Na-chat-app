@@ -42,7 +42,8 @@ export default class Register extends React.Component {
           uid: cred.user.uid,
           name: this.state.name,
           image: '',
-          status: "Hi... I am using 'Na?'. Come and join!"
+          status: "Hi... I am using 'Na?'. Come and join!",
+          date: ''
         })
         this.setState({
             isLoading: false,

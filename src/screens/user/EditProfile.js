@@ -27,35 +27,41 @@ export default class EditProfile extends React.Component {
   handleSubmit = () => {
     this.setState({ isLoading: true })
     console.log('submit')
+    const userId = this.state.user.uid
     const { name, status, date, user, fileName } = this.state
-    const userId = auth.currentUser.uid
-    var key = ''
-    db.ref('users/' + userId).once('value', snap => {
-      console.log('snap key', Object.keys(snap.val())[0])
-      key = Object.keys(snap.val())[0]
-      const user = Object.values(snap.val())[0]
-      console.log('user', user)
-    })
-    this.uriToBlob(this.state.fileUri)
-      .then((blob)=>{
-      return this.uploadToFirebase(blob);
-    }).then((snapshot)=>{
-      console.log("File uploaded");
+    if (this.state.fileUri) {
+      this.uriToBlob(this.state.fileUri)
+        .then((blob)=>{
+        return this.uploadToFirebase(blob);
+      }).then((snapshot)=>{
+        console.log("File uploaded");
+        var updates = {};
+        updates['users/' + userId] = { 
+          ...user, 
+          name: name !== '' ? name : user.name, 
+          status: status !== '' ? status : user.status,
+          date: date !== '' ? date : user.date,
+          image: fileName
+        };
+        db.ref().update(updates)
+        this.setState({ isLoading: false })
+        this.props.navigation.navigate('Profile')
+      }).catch((error)=>{
+        this.setState({ isLoading: false })
+        throw error;
+      })
+    } else {
       var updates = {};
-      updates['/users/' + userId + '/' + key] = { 
-        ...user, 
-        name: name !== '' ? name : user.name, 
-        status: status !== '' ? status : user.status,
-        date: date !== '' ? date : user.date,
-        image: fileName
-      };
-      db.ref().update(updates)
-      this.setState({ isLoading: false })
-      this.props.navigation.navigate('Profile')
-    }).catch((error)=>{
-      this.setState({ isLoading: false })
-      throw error;
-    })
+        updates['users/' + userId] = { 
+          ...user, 
+          name: name !== '' ? name : user.name, 
+          status: status !== '' ? status : user.status,
+          date: date !== '' ? date : user.date,
+        };
+        db.ref().update(updates)
+        this.setState({ isLoading: false })
+        this.props.navigation.navigate('Profile')
+    }
   }
 
   chooseFile = () => {

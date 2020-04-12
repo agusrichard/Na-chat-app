@@ -8,7 +8,7 @@ export default function TextInputEditProfile(props) {
     <View style={[styles.container, {borderBottomColor: color}]}>
       <Icon name={props.icon} size={20} style={styles.icon} color={color} />
       <TextInput 
-        placeholder={props.placeholder.length > 30 ? `${props.placeholder.slice(0, 30)}...` : props.placeholder}
+        placeholder={props.placeholder ? props.placeholder.length > 30 ? `${props.placeholder.slice(0, 30)}...` : props.placeholder : props.placeholder}
         style={styles.input}
         onFocus={() => setColor('#951dd1')}
         onBlur={() => setColor('#999')}
