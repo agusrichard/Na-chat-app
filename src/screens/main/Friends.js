@@ -21,9 +21,19 @@ export default class Friends extends React.Component {
       console.log('friends snap', snap.val())
       let items = []
       snap.forEach(item => {
-        console.log('item', Object.values(item.val())[0])
+        var user = Object.values(item.val())[0]
+        console.log('In Friends.js user', user)
         if (this.user.uid !== Object.values(item.val())[0].uid) {
-          items.push(Object.values(item.val())[0])
+          if (user.image) {
+            console.log('is this runned')
+            storage.ref('uploads/' + user.image).getDownloadURL()
+              .then(url => {
+                console.log('image url', url)
+                items.push({ ...user, imageUrl: url })
+              })
+          } else {
+            items.push(user)
+          }
         }
       })
 
@@ -55,7 +65,11 @@ export default class Friends extends React.Component {
             :
 
             this.state.users.map((user, i) => (
-              <UserCard user={user} key={i} onPress={() => this.props.navigation.navigate('Chats', { friend: user })} />
+              <UserCard 
+                user={user} 
+                key={i} 
+                onPress={() => this.props.navigation.navigate('Chats', { friend: user })} 
+              />
             ))
           }
         </ScrollView>

@@ -36,32 +36,35 @@ export default class Router extends Component {
       isLoggedIn: false,
       user: {}
     }
-    auth.onAuthStateChanged(this.onAuthStateChanged)
+    // auth.onAuthStateChanged(this.onAuthStateChanged)
   }
 
   componentDidMount() {
-    const userId = auth.currentUser.uid
-    console.log('userId', userId)
-    db.ref('users/' + userId).on('value', snap =>{
-      console.log('snap', snap)
-      const user = Object.values(snap.val())[0]
-      if (user.image) {
-        storage.ref('uploads/' + user.image).getDownloadURL()
-          .then(url => {
-            console.log('image url', url)
-            this.setState({
-              user: {
-                ...user,
-                imageUrl: url
-              }
+    console.log('router cuurent user', auth.currentUser)
+    if (auth.currentUser) {
+      const userId = auth.currentUser.uid
+      console.log('userId', userId)
+      db.ref('users/' + userId).on('value', snap =>{
+        console.log('snap', snap)
+        const user = Object.values(snap.val())[0]
+        if (user.image) {
+          storage.ref('uploads/' + user.image).getDownloadURL()
+            .then(url => {
+              console.log('image url', url)
+              this.setState({
+                user: {
+                  ...user,
+                  imageUrl: url
+                }
+              })
             })
+        } else {
+          this.setState({ 
+            user: user
           })
-      } else {
-        this.setState({ 
-          user: user
-        })
-      }
-    })
+        }
+      })
+    }
   }
 
   componentWillUnmount() {
@@ -118,13 +121,13 @@ export default class Router extends Component {
     )
   }
 
-  onAuthStateChanged = (user) => {
-    console.log('User in router', user)
-    if (user) {
-      console.log('will this ran?')
-      this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }))
-    }
-  }
+  // onAuthStateChanged = (user) => {
+  //   console.log('User in router', user)
+  //   if (user) {
+  //     console.log('will this ran?')
+  //     this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }))
+  //   }
+  // }
 
   render() {
     console.log('is user logged in', this.state.isLoggedIn)

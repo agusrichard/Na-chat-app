@@ -53,6 +53,7 @@ export default class EditProfile extends React.Component {
       this.setState({ isLoading: false })
       this.props.navigation.navigate('Profile')
     }).catch((error)=>{
+      this.setState({ isLoading: false })
       throw error;
     })
   }
