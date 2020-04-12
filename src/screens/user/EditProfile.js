@@ -21,12 +21,17 @@ export default class EditProfile extends React.Component {
     console.log('submit')
     const { name, status, date } = this.state
     const userId = auth.currentUser.uid
-    db.ref('users/' + userId).on('value', snap => {
+    db.ref('users/' + userId).once('value', snap => {
       console.log('snap key', Object.keys(snap.val())[0])
       const user = Object.values(snap.val())[0]
       console.log('user', user)
       var updates = {};
-      updates['/users/' + userId + '/' + Object.keys(snap.val())[0]] = { ...user, name, status, date };
+      updates['/users/' + userId + '/' + Object.keys(snap.val())[0]] = { 
+        ...user, 
+        name: name !== '' ? name : user.name, 
+        status: status !== '' ? status : user.status,
+        date: date !== '' ? date : user.date
+      };
       db.ref().update(updates)
     })
     this.props.navigation.navigate('Profile')
@@ -35,13 +40,17 @@ export default class EditProfile extends React.Component {
   componentDidMount() {
     const userId = auth.currentUser.uid
     console.log('userId', userId)
-    db.ref('users/' + userId).on('value', snap => {
+    db.ref('users/' + userId).once('value', snap => {
       console.log('snap', snap)
       this.setState({ 
         user: Object.values(snap.val())[0]
       })
     })
     console.log('user', this.state.user)
+  }
+
+  componentWillUnmount() {
+    db.ref('users').off()
   }
 
   render() {
@@ -63,7 +72,7 @@ export default class EditProfile extends React.Component {
           handleChange={(status) => this.setState({status})}
         />
         <CustomDatePicker 
-          date={this.state.date}
+          date={this.state.user.date}
           onDateChange={(date) => {this.setState({date: date})}}
         />
         <EditProfileButton 

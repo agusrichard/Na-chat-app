@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
+import moment from 'moment'
 import ProfileChoice from '../../components/ProfileChoice'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import { db, auth } from '../../config/Firebase'
@@ -27,14 +28,6 @@ export default class Profile extends React.Component {
       this.setState({ user: Object.values(snap.val())[0] })
     })
     console.log('user', this.state.user)
-    // db.ref('users').on('value', snap => {
-    //   snap.forEach(item => {
-    //     if (auth.currentUser.uid === item.val().uid) {
-    //       console.log('item', item.val())
-    //       this.setState({ user: item.val() })
-    //     }
-    //   })
-    // })
   }
 
   render() {
@@ -48,13 +41,16 @@ export default class Profile extends React.Component {
           />
           <View style={styles.textBox}>
             <Text style={styles.name}>{this.state.user.name}</Text>
-            <Text style={styles.username}>{this.state.user.email}</Text>
+            <View style={styles.birthday}>
+              <Icon name="envelope" color="purple" size={20}/>
+              <Text style={styles.birthdayText}>{this.state.user.email}</Text>
+            </View>
+            <View style={styles.birthday}>
+              <Icon name="birthday-cake" color="purple" size={20}/>
+              <Text style={styles.birthdayText}>{moment(this.state.user.date).locale('en-gb').format('LL')}</Text>
+            </View>
           </View>
         </View>
-        {/* <View style={styles.secondContainer}>
-          <Text style={[styles.friendText, {borderRightColor: '#cf03fc', borderRightWidth: StyleSheet.hairlineWidth, borderTopRightRadius: 5}]}>Friends</Text>
-          <Text style={[styles.friendText, {borderLeftColor: '#cf03fc', borderLeftWidth: StyleSheet.hairlineWidth, borderTopLeftRadius: 5}]}>99</Text>
-        </View> */}
         <View style={styles.statusContainer}>
           <Text style={{ fontSize: 20, marginBottom: 10, fontWeight: 'bold' }}>Status:</Text>
           <Text>
@@ -150,5 +146,13 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     paddingVertical: 3
+  },
+  birthday: {
+    marginTop: 5,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  birthdayText: {
+    marginLeft: 10
   }
 })
