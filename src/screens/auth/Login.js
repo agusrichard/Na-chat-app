@@ -74,7 +74,7 @@ export default class Login extends React.Component {
             <Text>Success</Text>
             :
             <Button 
-              title="Sign Up"
+              title="Sign In"
               isLoading={this.state.isLoading}
               onPress={() => this.login()}
             />

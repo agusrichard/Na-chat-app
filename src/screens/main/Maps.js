@@ -23,7 +23,7 @@ export default class Maps extends React.Component {
         }
       ]
     }
-    this.chatRef = db.ref('users')
+    this.ref = db.ref('users')
   }
 
   listenForChats(ref) {
@@ -46,11 +46,11 @@ export default class Maps extends React.Component {
   }
 
   componentDidMount() {
-    this.listenForChats(this.chatRef)
+    this.listenForChats(this.ref)
   }
 
   componentWillUnmount() {
-    this.chatRef.off()
+    this.ref.off()
   }
 
   render() {
@@ -76,8 +76,11 @@ export default class Maps extends React.Component {
           { !this.state.isLoading && this.state.users.filter(user => user.hasOwnProperty('latitude')).map(user => {
             console.log('\n')
             console.log('user.name', user.name)
+            console.log('user.latitude', user.latitude)
+            console.log('user.longitude', user.longitude)
             return (
-              <Marker 
+              <Marker
+                title={user.name}
                 coordinate={{
                   latitude: user.latitude,
                   longitude: user.longitude
