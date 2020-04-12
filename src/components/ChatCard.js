@@ -2,15 +2,15 @@ import React from 'react'
 import { StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native'
 
 export default function ChatCard(props) {
-
+  console.log('user image', props.chat.user.image)
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <Image 
-        source={require('../assets/images/components/account.png')}
+        source={props.chat.user.image ? props.chat.user.image : require('../assets/images/components/account.png')}
         style={styles.userImage}
       />
       <View>
-        <Text>{props.chat.name}</Text>
+        <Text>{props.chat.user.name}</Text>
         <Text>{props.chat.text}</Text>
       </View>
     </TouchableOpacity>

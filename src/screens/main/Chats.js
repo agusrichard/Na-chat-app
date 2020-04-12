@@ -54,7 +54,8 @@ export default class Chats extends React.Component {
           _id: now,
           text: message.text,
           createdAt: now,
-          uid: this.user.uid,
+          sender: this.user.uid,
+          receiver: this.friend.uid,
           order: -1 * now,
           coords: info.coords
         })

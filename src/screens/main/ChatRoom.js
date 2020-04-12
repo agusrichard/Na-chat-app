@@ -16,27 +16,44 @@ export default class ChatRoom extends React.Component {
   listenForChats = (ref) => {
     ref.on('value', snap => {
       console.log('\n')
-      console.log('snap in chatroom', snap)
+      console.log('In ChatRoom.js snap', snap.val())
       var items = []
       snap.forEach(item => {
-        console.log('item', item.val())
+        console.log('item key', item.key)
         if (item.key.split('-').includes(auth.currentUser.uid)) {
-          console.log('true')
-          console.log('item', Object.values(item.val()).filter(item => item.uid !== auth.currentUser.uid))
-          var filtered = Object.values(item.val()).filter(item => item.uid !== auth.currentUser.uid)
-          console.log(filtered[filtered.length - 1])
-          if (filtered[filtered.length - 1] != undefined) {
-            var userId = filtered[filtered.length - 1].uid
-            var text = filtered[filtered.length - 1].text
-            db.ref('users/' + userId).on('value', snap => {
-              console.log('user snap', Object.values(snap.val())[0].name)
-              var name = Object.values(snap.val())[0].name
-              items.push({ name: name, text: text, userId: userId  })
+          console.log('this is my chats')
+          console.log('item.val', Object.values(item.val())[Object.values(item.val()).length - 1])
+          var lastChat = Object.values(item.val())[Object.values(item.val()).length - 1]
+          if (lastChat != undefined) {
+            var receiverId = lastChat.receiver
+            var text = lastChat.text
+            db.ref('users/' + receiverId).on('value', snap => {
+              const user = snap.val()
+              items.push({ user: user, text: text })
             })
           }
         }
       })
-      console.log('items', items)
+
+      console.log('items users', items)
+      // snap.forEach(item => {
+      //   console.log('item', item.val())
+      //   if (item.key.split('-').includes(auth.currentUser.uid)) {
+      //     console.log('true')
+      //     console.log('item', Object.values(item.val()).filter(item => item.uid !== auth.currentUser.uid))
+      //     var filtered = Object.values(item.val()).filter(item => item.uid !== auth.currentUser.uid)
+      //     console.log(filtered[filtered.length - 1])
+      //     if (filtered[filtered.length - 1] != undefined) {
+      //       var userId = filtered[filtered.length - 1].uid
+      //       var text = filtered[filtered.length - 1].text
+      //       db.ref('users/' + userId).on('value', snap => {
+      //         const user = snap.val()
+      //         items.push({ user: user, text: text })
+      //       })
+      //     }
+      //   }
+      // })
+      // console.log('items', items)
       this.setState({ chats: items })
     })
   }
