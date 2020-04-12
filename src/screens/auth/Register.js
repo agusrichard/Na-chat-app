@@ -40,7 +40,8 @@ export default class Register extends React.Component {
         db.ref('users/' + cred.user.uid).push({
           email: this.state.email,
           uid: cred.user.uid,
-          name: this.state.name
+          name: this.state.name,
+          status: "Hi... I am using 'Na?'. Come and join!"
         })
         this.setState({
             isLoading: false,

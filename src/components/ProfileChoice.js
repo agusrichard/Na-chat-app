@@ -4,16 +4,16 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default function ProfileChoice(props) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <Icon name={props.iconType} size={30} style={styles.icon} color="#cf03fc" />
       <View style={styles.textContainer}>
         <Text style={styles.textTitle}>{props.title}</Text>
         <Text style={styles.textDesc}>{props.desc}</Text>
       </View>
-      <TouchableOpacity style={{ position: 'absolute', right: 0 }} >
+      <View style={{ position: 'absolute', right: 0 }} >
         <Icon name="chevron-right" size={30} color="#999" />
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   )
 }
 

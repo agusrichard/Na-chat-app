@@ -58,9 +58,7 @@ export default class Profile extends React.Component {
         <View style={styles.statusContainer}>
           <Text style={{ fontSize: 20, marginBottom: 10, fontWeight: 'bold' }}>Status:</Text>
           <Text>
-            Twenty-five years and my life is still
-            Trying to get up that great big hill of hope
-            For a destination
+            {this.state.user.status}
           </Text>
         </View>
         <View style={styles.choicesBox}>
@@ -68,6 +66,7 @@ export default class Profile extends React.Component {
             iconType="edit"
             title="Edit Profile"
             desc="Edit name and profile picture"
+            onPress={() => this.props.navigation.navigate('EditProfile')}
           />
           <ProfileChoice 
             iconType="question-circle"

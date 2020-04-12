@@ -16,6 +16,7 @@ import Login from '../screens/auth/Login'
 
 // User Screens
 import Profile from '../screens/user/Profile'
+import EditProfile from '../screens/user/EditProfile'
 
 // Main Screens
 import Maps from '../screens/main/Maps'
@@ -81,6 +82,7 @@ export default class Router extends Component {
             }}
           />
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="EditProfile" component={EditProfile} options={{ title: 'Edit Profile' }} />
           <Stack.Screen name="Chats" component={Chats} />
       </Stack.Navigator>
     )
