@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'rea
 import moment from 'moment'
 import ProfileChoice from '../../components/ProfileChoice'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { db, auth } from '../../config/Firebase'
+import { db, auth, storage } from '../../config/Firebase'
 
 
 export default class Profile extends React.Component {
@@ -11,7 +11,20 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {}
+      user: {},
+      imageUrl: ''
+    }
+  }
+
+  getImage = async (imageRef) => {
+    try {
+      const ref = storage.ref(imageRef);
+      console.log('ref', ref)
+      const url = await ref.getDownloadURL();
+      console.log('url', url)
+      return url
+    } catch(err) {
+      console.log(err)
     }
   }
 
@@ -23,11 +36,31 @@ export default class Profile extends React.Component {
   componentDidMount() {
     const userId = auth.currentUser.uid
     console.log('userId', userId)
-    db.ref('users/' + userId).on('value', snap => {
+    db.ref('users/' + userId).on('value', snap =>{
       console.log('snap', snap)
-      this.setState({ user: Object.values(snap.val())[0] })
+      const user = Object.values(snap.val())[0]
+      if (user.image) {
+        console.log('is this runned')
+        storage.ref('uploads/' + user.image).getDownloadURL()
+          .then(url => {
+            console.log('image url', url)
+            this.setState({
+              user: {
+                ...user,
+                imageUrl: url
+              }
+            })
+          })
+      } else {
+        this.setState({ 
+          user: user
+        })
+      }
     })
-    console.log('user', this.state.user)
+  }
+
+  componentWillUnmount() {
+    db.ref('users').off()
   }
 
   render() {
@@ -36,7 +69,11 @@ export default class Profile extends React.Component {
       <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
           <Image 
-            source={require('../../assets/images/components/account.png')} 
+            source={
+              this.state.user.imageUrl ?
+              { uri: this.state.user.imageUrl } :
+              require('../../assets/images/components/account.png')
+            } 
             style={styles.userImage}
           />
           <View style={styles.textBox}>
@@ -106,7 +143,8 @@ const styles = StyleSheet.create({
   },
   userImage: {
     width: 85,
-    height: 85
+    height: 85,
+    borderRadius: 85/2
   },
   textBox: {
     marginLeft: 25

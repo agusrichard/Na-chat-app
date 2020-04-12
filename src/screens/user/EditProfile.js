@@ -12,6 +12,7 @@ export default class EditProfile extends React.Component {
   constructor(props) {
     super(props) 
     this.state = {
+      isLoading: false,
       user: {},
       name: '',
       status: '',
@@ -24,6 +25,7 @@ export default class EditProfile extends React.Component {
   }
 
   handleSubmit = () => {
+    this.setState({ isLoading: true })
     console.log('submit')
     const { name, status, date, user, fileName } = this.state
     const userId = auth.currentUser.uid
@@ -39,19 +41,20 @@ export default class EditProfile extends React.Component {
       return this.uploadToFirebase(blob);
     }).then((snapshot)=>{
       console.log("File uploaded");
+      var updates = {};
+      updates['/users/' + userId + '/' + key] = { 
+        ...user, 
+        name: name !== '' ? name : user.name, 
+        status: status !== '' ? status : user.status,
+        date: date !== '' ? date : user.date,
+        image: fileName
+      };
+      db.ref().update(updates)
+      this.setState({ isLoading: false })
+      this.props.navigation.navigate('Profile')
     }).catch((error)=>{
       throw error;
     })
-    var updates = {};
-    updates['/users/' + userId + '/' + key] = { 
-      ...user, 
-      name: name !== '' ? name : user.name, 
-      status: status !== '' ? status : user.status,
-      date: date !== '' ? date : user.date,
-      image: fileName
-    };
-    db.ref().update(updates)
-    this.props.navigation.navigate('Profile')
   }
 
   chooseFile = () => {
@@ -111,8 +114,8 @@ export default class EditProfile extends React.Component {
   uploadToFirebase = (blob) => {
     return new Promise((resolve, reject)=>{
       var storageRef = storage.ref();
-      storageRef.child('uploads/photo.jpg').put(blob, {
-        contentType: 'image/jpeg'
+      storageRef.child('uploads/' + this.state.fileName).put(blob, {
+        contentType: this.state.fileType
       }).then((snapshot)=>{
         blob.close();
         resolve(snapshot);
@@ -125,13 +128,26 @@ export default class EditProfile extends React.Component {
   componentDidMount() {
     const userId = auth.currentUser.uid
     console.log('userId', userId)
-    db.ref('users/' + userId).once('value', snap => {
+    db.ref('users/' + userId).on('value', snap =>{
       console.log('snap', snap)
-      this.setState({ 
-        user: Object.values(snap.val())[0]
-      })
+      const user = Object.values(snap.val())[0]
+      if (user.image) {
+        storage.ref('uploads/' + user.image).getDownloadURL()
+          .then(url => {
+            console.log('image url', url)
+            this.setState({
+              user: {
+                ...user,
+                imageUrl: url
+              }
+            })
+          })
+      } else {
+        this.setState({ 
+          user: user
+        })
+      }
     })
-    console.log('user', this.state.user)
   }
 
   componentWillUnmount() {
@@ -144,7 +160,14 @@ export default class EditProfile extends React.Component {
       <ScrollView contentContainerStyle={styles.container}>
         <TouchableOpacity onPress={() => this.chooseFile()} style={{ alignItems: 'center' }}>
           <Image 
-            source={this.state.filePath !== '' ? this.state.filePath : require('../../assets/images/components/account.png')} 
+            source={
+              this.state.filePath === '' ?
+              this.state.user.imageUrl ? 
+              {uri: this.state.user.imageUrl}
+              : 
+              require('../../assets/images/components/account.png')
+              : 
+              this.state.filePath} 
             style={styles.userImage}
           />
           <Icon name="images"size={20} style={styles.imagePicker} color="purple"/>
@@ -166,6 +189,7 @@ export default class EditProfile extends React.Component {
         <EditProfileButton 
           title="Edit"
           onPress={() => this.handleSubmit()}
+          isLoading={this.state.isLoading}
         />
       </ScrollView>
     )
