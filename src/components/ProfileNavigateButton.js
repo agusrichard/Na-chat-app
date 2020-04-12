@@ -11,7 +11,7 @@ export default function ProfileNavigateButton(props) {
       style={styles.container}
     >
       <Image 
-        source={require('../assets/images/components/account.png')}
+        source={ props.imageUrl ? { uri: props.imageUrl } : require('../assets/images/components/account.png')}
         style={styles.icon}
       />
     </TouchableOpacity>
@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
   },  
   icon: {
     width: 35,
-    height: 35
+    height: 35,
+    borderRadius: 35/2,
+    borderColor: 'purple',
+    borderWidth: StyleSheet.hairlineWidth
   }
 })

@@ -16,18 +16,6 @@ export default class Profile extends React.Component {
     }
   }
 
-  getImage = async (imageRef) => {
-    try {
-      const ref = storage.ref(imageRef);
-      console.log('ref', ref)
-      const url = await ref.getDownloadURL();
-      console.log('url', url)
-      return url
-    } catch(err) {
-      console.log(err)
-    }
-  }
-
   handleLogout = () => {
     auth.signOut()
     this.props.navigation.navigate('Splash')

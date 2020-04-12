@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import { auth } from '../config/Firebase'
+import { auth, db, storage } from '../config/Firebase'
 import ProfileNavigateButton from '../components/ProfileNavigateButton'
 
 
@@ -33,9 +33,39 @@ export default class Router extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      user: {}
     }
     auth.onAuthStateChanged(this.onAuthStateChanged)
+  }
+
+  componentDidMount() {
+    const userId = auth.currentUser.uid
+    console.log('userId', userId)
+    db.ref('users/' + userId).on('value', snap =>{
+      console.log('snap', snap)
+      const user = Object.values(snap.val())[0]
+      if (user.image) {
+        storage.ref('uploads/' + user.image).getDownloadURL()
+          .then(url => {
+            console.log('image url', url)
+            this.setState({
+              user: {
+                ...user,
+                imageUrl: url
+              }
+            })
+          })
+      } else {
+        this.setState({ 
+          user: user
+        })
+      }
+    })
+  }
+
+  componentWillUnmount() {
+    db.ref('users').off()
   }
 
 
@@ -77,7 +107,7 @@ export default class Router extends Component {
               },
               headerTintColor: '#fff',
               headerRight: () => (
-                <ProfileNavigateButton />
+                <ProfileNavigateButton imageUrl={this.state.user.imageUrl}/>
               )
             }}
           />
