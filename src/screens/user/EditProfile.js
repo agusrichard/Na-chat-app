@@ -130,9 +130,9 @@ export default class EditProfile extends React.Component {
     const userId = auth.currentUser.uid
     console.log('userId', userId)
     db.ref('users/' + userId).on('value', snap =>{
-      console.log('snap', snap)
-      const user = Object.values(snap.val())[0]
+      const user = snap.val()
       if (user.image) {
+        console.log('user has image')
         storage.ref('uploads/' + user.image).getDownloadURL()
           .then(url => {
             console.log('image url', url)
@@ -156,7 +156,6 @@ export default class EditProfile extends React.Component {
   }
 
   render() {
-
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <TouchableOpacity onPress={() => this.chooseFile()} style={{ alignItems: 'center' }}>
@@ -179,7 +178,7 @@ export default class EditProfile extends React.Component {
           handleChange={(name) => this.setState({name})}
         />
         <TextInputEditProfile 
-          placeholder={this.state.user.status !== undefined ? this.state.user.status : 'Hi... I am using "Na?"'}
+          placeholder={this.state.user.status}
           icon="paragraph"
           handleChange={(status) => this.setState({status})}
         />

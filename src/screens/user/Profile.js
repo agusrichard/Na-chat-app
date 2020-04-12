@@ -11,8 +11,7 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {},
-      imageUrl: ''
+      user: {}
     }
   }
 
@@ -25,10 +24,9 @@ export default class Profile extends React.Component {
     const userId = auth.currentUser.uid
     console.log('userId', userId)
     db.ref('users/' + userId).on('value', snap =>{
-      console.log('snap', snap)
-      const user = Object.values(snap.val())[0]
+      const user = snap.val()
       if (user.image) {
-        console.log('is this runned')
+        console.log('user has image')
         storage.ref('uploads/' + user.image).getDownloadURL()
           .then(url => {
             console.log('image url', url)
@@ -52,7 +50,7 @@ export default class Profile extends React.Component {
   }
 
   render() {
-    console.log('user', this.state.user)
+    console.log('user in render', this.state.user)
     return (
       <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
@@ -73,7 +71,7 @@ export default class Profile extends React.Component {
             <View style={styles.birthday}>
               <Icon name="birthday-cake" color="purple" size={20}/>
               <Text style={styles.birthdayText}>
-                { this.state.user.date !== '' ? 
+                { this.state.user.date ? 
                   moment(this.state.user.date).locale('en-gb').format('LL') 
                 : 
                   '-----'

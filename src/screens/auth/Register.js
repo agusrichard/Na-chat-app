@@ -37,10 +37,11 @@ export default class Register extends React.Component {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(cred => {
-        db.ref('users/' + cred.user.uid).push({
+        db.ref('users/' + cred.user.uid).set({
           email: this.state.email,
           uid: cred.user.uid,
           name: this.state.name,
+          image: '',
           status: "Hi... I am using 'Na?'. Come and join!"
         })
         this.setState({
