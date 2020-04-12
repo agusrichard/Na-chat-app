@@ -6,12 +6,12 @@ export default function UserCard(props) {
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <Image 
-        source={require('../assets/images/components/account.png')}
+        source={props.user.image ? props.user.image : require('../assets/images/components/account.png')}
         style={styles.userImage}
       />
       <View>
         <Text style={styles.name}>{props.user.name}</Text>
-        <Text style={styles.status}>I am having fun bitch!</Text>
+        <Text style={styles.status}>{props.user.status}</Text>
       </View>
     </TouchableOpacity>
   )

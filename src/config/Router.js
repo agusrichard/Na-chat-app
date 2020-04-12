@@ -46,6 +46,7 @@ export default class Router extends Component {
       console.log('userId', userId)
       db.ref('users/' + userId).on('value', snap =>{
         const user = snap.val()
+        console.log('user in router', user)
         this.setState({ user: user })
       })
     }
