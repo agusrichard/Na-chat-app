@@ -7,46 +7,33 @@ export default class Maps extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: [],
-      markers: [
-        {
-          latitude: -5.995568168191417,
-          longitude: 106.0258511232789
-        },
-        {
-          latitude: -5.995568168191417,
-          longitude: 106.0258511232789
-        },
-        {
-          latitude: -5.995568168191417,
-          longitude: 106.0258511232789
-        }
-      ]
+      users: []
     }
+    this.user = auth.currentUser
     this.ref = db.ref('users')
   }
 
-  listenForChats(ref) {
-    // console.log('\n')
-    // console.log('logged in user', auth.currentUser.uid)
-    this.setState({
-      isLoading: true
-    })
-    ref.on('value', snap => {
-      // console.log('snap', snap.val())
-      let users = []
+  listenForUsers(usersRef) {
+    usersRef.on('value', (snap) => {
+      console.log('friends snap', snap.val())
+      let items = []
       snap.forEach(item => {
-        // console.log('item', item.key)
-        if (item.key != auth.currentUser.uid) {
-          users.push({...Object.values(item.val())[0], ...Object.values(item.val())[1]})
+        var user = item.val()
+        console.log('In Friends.js user', user)
+        if (this.user.uid !== user.uid) {
+          items.push(user)
         }
       })
-      this.setState({ users, isLoading: false })
+
+      console.log('items users', items)
+      this.setState({
+        users: items
+      })
     })
   }
 
   componentDidMount() {
-    this.listenForChats(this.ref)
+    this.listenForUsers(this.ref)
   }
 
   componentWillUnmount() {
@@ -54,12 +41,10 @@ export default class Maps extends React.Component {
   }
 
   render() {
-    // this.state.users.forEach(user => {
-    //   console.log('\n')
-    //   console.log('user latitude', user.latitude)
-    //   console.log('user longitude', user.longitude)
-    //   console.log('user name', user.name)
-    // })
+    this.state.users.forEach(user => {
+      console.log('\n')
+      console.log('In Maps.js user', user.coords)
+    })
     return (
       <View style={styles.container}>
         <MapView
@@ -71,19 +56,17 @@ export default class Maps extends React.Component {
             latitudeDelta: 0.015,
             longitudeDelta: 0.0121,
           }}
-        >
-
-          { !this.state.isLoading && this.state.users.filter(user => user.hasOwnProperty('latitude')).map(user => {
-            console.log('\n')
-            console.log('user.name', user.name)
-            console.log('user.latitude', user.latitude)
-            console.log('user.longitude', user.longitude)
+        > 
+          { this.state.users.filter(user => user.hasOwnProperty('coords')).forEach(user => {
+            console.log('user in here', user)
+            console.log('user latitude', user.coords.latitude)
+            console.log('user longitude', user.coords.longitude)
             return (
               <Marker
                 title={user.name}
                 coordinate={{
-                  latitude: user.latitude,
-                  longitude: user.longitude
+                  latitude: user.coords.latitude,
+                  longitude: user.coords.longitude
                 }}
               />
             )

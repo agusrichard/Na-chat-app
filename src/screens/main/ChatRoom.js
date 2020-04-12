@@ -72,7 +72,7 @@ export default class ChatRoom extends React.Component {
       <ScrollView contentContainerStyle={styles.container}>
         { this.state.chats.length !== 0 ?
           this.state.chats.map((chat, i) => (
-            <ChatCard key={i} chat={chat} onPress={() => this.props.navigation.navigate('Chats', { friend: { uid: chat.userId } })}/>
+            <ChatCard key={i} chat={chat} onPress={() => this.props.navigation.navigate('Chats', { friend: { uid: chat.user.uid } })}/>
           )) :
           <Text style={styles.text}>No Chats</Text>
         }
