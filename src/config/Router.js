@@ -45,24 +45,8 @@ export default class Router extends Component {
       const userId = auth.currentUser.uid
       console.log('userId', userId)
       db.ref('users/' + userId).on('value', snap =>{
-        console.log('snap', snap)
-        const user = Object.values(snap.val())[0]
-        if (user.image) {
-          storage.ref('uploads/' + user.image).getDownloadURL()
-            .then(url => {
-              console.log('image url', url)
-              this.setState({
-                user: {
-                  ...user,
-                  imageUrl: url
-                }
-              })
-            })
-        } else {
-          this.setState({ 
-            user: user
-          })
-        }
+        const user = snap.val()
+        this.setState({ user: user })
       })
     }
   }
@@ -110,7 +94,7 @@ export default class Router extends Component {
               },
               headerTintColor: '#fff',
               headerRight: () => (
-                <ProfileNavigateButton imageUrl={this.state.user.imageUrl}/>
+                <ProfileNavigateButton imageUrl={this.state.user.image}/>
               )
             }}
           />

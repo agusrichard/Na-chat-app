@@ -25,23 +25,7 @@ export default class Profile extends React.Component {
     console.log('userId', userId)
     db.ref('users/' + userId).on('value', snap =>{
       const user = snap.val()
-      if (user.image) {
-        console.log('user has image')
-        storage.ref('uploads/' + user.image).getDownloadURL()
-          .then(url => {
-            console.log('image url', url)
-            this.setState({
-              user: {
-                ...user,
-                imageUrl: url
-              }
-            })
-          })
-      } else {
-        this.setState({ 
-          user: user
-        })
-      }
+      this.setState({ user: user })
     })
   }
 
@@ -56,8 +40,8 @@ export default class Profile extends React.Component {
         <View style={styles.headerContainer}>
           <Image 
             source={
-              this.state.user.imageUrl ?
-              { uri: this.state.user.imageUrl } :
+              this.state.user.image ?
+              { uri: this.state.user.image } :
               require('../../assets/images/components/account.png')
             } 
             style={styles.userImage}

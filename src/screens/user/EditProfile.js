@@ -35,20 +35,28 @@ export default class EditProfile extends React.Component {
         return this.uploadToFirebase(blob);
       }).then((snapshot)=>{
         console.log("File uploaded");
-        var updates = {};
-        updates['users/' + userId] = { 
-          ...user, 
-          name: name !== '' ? name : user.name, 
-          status: status !== '' ? status : user.status,
-          date: date !== '' ? date : user.date,
-          image: fileName
-        };
-        db.ref().update(updates)
-        this.setState({ isLoading: false })
-        this.props.navigation.navigate('Profile')
+        storage.ref('uploads/' + fileName).getDownloadURL()
+          .then(url => {
+            console.log('image url', url)
+            var updates = {};
+            updates['users/' + userId] = { 
+              ...user, 
+              name: name !== '' ? name : user.name, 
+              status: status !== '' ? status : user.status,
+              date: date !== '' ? date : user.date,
+              image: url
+            };
+            db.ref().update(updates)
+            this.setState({ isLoading: false })
+            this.props.navigation.navigate('Profile')
+          })
+          .catch((error) => {
+            this.setState({ isLoading: false })
+            console.log(error)
+          })
       }).catch((error)=>{
         this.setState({ isLoading: false })
-        throw error;
+        console.log(error)
       })
     } else {
       var updates = {};
@@ -189,7 +197,7 @@ export default class EditProfile extends React.Component {
           handleChange={(status) => this.setState({status})}
         />
         <CustomDatePicker 
-          date={this.state.user.date}
+          date={this.state.user.date !== '' ? this.state.user.date : this.state.date}
           onDateChange={(date) => {this.setState({date: date})}}
         />
         <EditProfileButton 

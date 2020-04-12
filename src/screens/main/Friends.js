@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import UserCard from '../../components/UserCard'
-import { auth, db } from '../../config/Firebase'
+import { auth, db, storage } from '../../config/Firebase'
 
 export default class Friends extends React.Component {
 
@@ -21,27 +21,41 @@ export default class Friends extends React.Component {
       console.log('friends snap', snap.val())
       let items = []
       snap.forEach(item => {
-        var user = Object.values(item.val())[0]
-        console.log('In Friends.js user', user)
-        if (this.user.uid !== Object.values(item.val())[0].uid) {
+        var user = item.val()
+        console.log('In Friends.js, user id', user.uid)
+        if (this.user.uid != user.uid) {
           if (user.image) {
-            console.log('is this runned')
             storage.ref('uploads/' + user.image).getDownloadURL()
               .then(url => {
                 console.log('image url', url)
                 items.push({ ...user, imageUrl: url })
               })
-          } else {
-            items.push(user)
           }
         }
       })
+      // let items = []
+      // snap.forEach(item => {
+      //   var user = Object.values(item.val())[0]
+      //   console.log('In Friends.js user', user)
+      //   if (this.user.uid !== Object.values(item.val())[0].uid) {
+      //     if (user.image) {
+      //       console.log('is this runned')
+      //       storage.ref('uploads/' + user.image).getDownloadURL()
+      //         .then(url => {
+      //           console.log('image url', url)
+      //           items.push({ ...user, imageUrl: url })
+      //         })
+      //     } else {
+      //       items.push(user)
+      //     }
+      //   }
+      // })
 
-      console.log('items', items)
-
-      this.setState({
-        users: items
-      })
+      // console.log('items', items)
+      // console.log('items', items)
+      // this.setState({
+      //   users: items
+      // })
     })
   }
 
