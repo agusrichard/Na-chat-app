@@ -1,4 +1,4 @@
-<h1 align="left">Na? -- Chat App with Maps</h1>
+<h1 align="left">Na? Chat App with Maps</h1>
 
 Na? is a mobile chat app with maps functionality. So people can see where you are and you could see where they are.
 
