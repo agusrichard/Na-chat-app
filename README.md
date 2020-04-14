@@ -5,7 +5,6 @@ Na? is a mobile chat app with maps functionality. So people can see where you ar
 
 ## Built With
 <a href="#"><img src="https://img.shields.io/badge/node.js-v12.14.0-green?style=flat-square" alt="node.js version"></a>
-<a href="#"><img src="https://img.shields.io/badge/react__native-v0.61.5-blue?style=flat-square" alt="react native version"></a>
 
 
 ## How to run the app ?
